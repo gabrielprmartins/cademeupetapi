@@ -7,12 +7,12 @@ function api_user_post($request) {
   $password = $request['password'];
 
   if (empty($email) || empty($name) || empty($password)) {
-    $response = new WP_Error('error', 'Dados incompletos', ['status' => 406]);
+    $response = new WP_Error('error', 'Dados incompletos.', ['status' => 406]);
     return rest_ensure_response($response);
   }
 
   if (username_exists($email) || email_exists($email)) {
-    $response = new WP_Error('error', 'E-mail já cadastrado', ['status' => 403]);
+    $response = new WP_Error('error', 'E-mail já cadastrado.', ['status' => 403]);
     return rest_ensure_response($response);
   }
 

@@ -7,6 +7,12 @@ require_once $dirbase . '/endpoints/user_post.php';
 require_once $dirbase . '/endpoints/user_get.php';
 require_once $dirbase . '/endpoints/user_put.php';
 
+require_once $dirbase . '/endpoints/pet_post.php';
+
+update_option('large_size_w', 1000);
+update_option('large_size_h', 1000);
+update_option('large_crop', 1);
+
 function change_api() {
   return 'json';
 } 
