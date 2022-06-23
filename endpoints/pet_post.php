@@ -13,7 +13,6 @@ function api_pet_post($request) {
   $specie = sanitize_text_field($request['specie']);
   $sex = sanitize_text_field($request['sex']);
   $region = sanitize_text_field($request['region']);
-  $phone = sanitize_text_field($request['phone']);
   $comment = sanitize_text_field($request['comment']);
   $files = $request->get_file_params();
 
@@ -21,8 +20,6 @@ function api_pet_post($request) {
   || empty($specie) 
   || empty($sex) 
   || empty($region) 
-  || empty($phone) 
-  || empty($comment)
   || empty($files)) {
     $response = new WP_Error('error', 'Dados incompletos.', ['status' => 422]);
     return rest_ensure_response($response);
@@ -40,7 +37,7 @@ function api_pet_post($request) {
       'sex' => $sex,
       'sex' => $sex,
       'region' => $region,
-      'phone' => $phone,
+      'status' => 'lost'
     ],
   ];
   $post_id = wp_insert_post($response);
